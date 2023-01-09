@@ -25,7 +25,10 @@ class TransactionController extends Controller
     public function detail(ItemPoint $itemPoint)
     {
         if(Auth::user()->profileUser->point < $itemPoint->point ){
-            return redirect()->route('user.transaction.index');
+            return redirect()->route('user.transaction.index')->with([
+                'status' => 'failed',
+                'message' => 'maaf point anda tidak mencukupi'
+            ]);
         }
         return view('user.dashboard.transaction.detail', [
             'itemPoint' => $itemPoint
@@ -35,7 +38,10 @@ class TransactionController extends Controller
     public function checkout(ItemPoint $itemPoint)
     {
         if(Auth::user()->profileUser->point < $itemPoint->point ){
-            return redirect()->route('user.transaction.index');
+            return redirect()->route('user.transaction.index')->with([
+                'status' => 'failed',
+                'message' => 'maaf point anda tidak mencukupi'
+            ]);
         }
         return view('user.dashboard.transaction.checkout', [
             'itemPoint' => $itemPoint
@@ -45,7 +51,10 @@ class TransactionController extends Controller
     public function processCheckout(PointExchangerCreateRequest $request, ItemPoint $itemPoint)
     {
         if(Auth::user()->profileUser->point < $itemPoint->point ){
-            return redirect()->route('user.transaction.index');
+            return redirect()->route('user.transaction.index')->with([
+                'status' => 'failed',
+                'message' => 'maaf point anda tidak mencukupi'
+            ]);
         }
 
         DB::beginTransaction();

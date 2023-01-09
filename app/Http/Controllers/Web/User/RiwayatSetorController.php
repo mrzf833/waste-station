@@ -89,17 +89,22 @@ class RiwayatSetorController extends Controller
     }
 
     public function datatableDetail(Transaction $transaction)
-        {
-            $query = TransactionDetail::join('wastes as ws', 'transaction_details.waste_id', '=', 'ws.id')
-                ->select([
-                    'transaction_details.id',
-                    'transaction_details.waste_id',
-                    'ws.name as waste_name',
-                    'transaction_details.total_waste',
-                    'transaction_details.total_point'
-                ])
-                ->getQuery();
-            return datatables()->of($query)
-            ->make(true);
+    {
+        if($transaction->client_id != Auth::id()){
+            return abort(404);
         }
+
+        $query = TransactionDetail::join('wastes as ws', 'transaction_details.waste_id', '=', 'ws.id')
+            ->where('transaction_details.transaction_id', $transaction->id)
+            ->select([
+                'transaction_details.id',
+                'transaction_details.waste_id',
+                'ws.name as waste_name',
+                'transaction_details.total_waste',
+                'transaction_details.total_point'
+            ])
+            ->getQuery();
+        return datatables()->of($query)
+        ->make(true);
+    }
 }
