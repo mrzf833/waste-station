@@ -68,12 +68,24 @@
             <h1 class="text-center text-[50px] text-[#fff] py-28">Program</h1>
             <div class="flex justify-center">
                 <div class="flex flex-col gap-8 lg:flex-row justify-center">
-                    <a href="{{ route('landing.program') }}" class="inline-block mx-8 mx-w-[214px]">
+                    {{-- <a href="{{ route('landing.program.organik') }}" class="inline-block mx-8 mx-w-[214px]">
+                        <div class="bg-[#fff] flex items-center flex-col rounded-lg py-4 px-8 h-full">
+                            <img class="w-[80px]" src="{{ asset('assets-user/organik.png') }}" alt="">
+                            <span class="block text-sm w-[150px] text-center mt-8">Penyetoran Sampah Organik</span>
+                        </div>
+                    </a> --}}
+                    <a href="{{ route('landing.program.non_organik') }}" class="inline-block mx-8 mx-w-[214px]">
                         <div class="bg-[#fff] flex items-center flex-col rounded-lg py-4 px-8 h-full">
                             <img class="w-[80px]" src="{{ asset('assets-user/non-organik.png') }}" alt="">
                             <span class="block text-sm w-[150px] text-center mt-8">Penyetoran Sampah Non-Organik</span>
                         </div>
                     </a>
+                    {{-- <a href="#" class="inline-block mx-8 mx-w-[214px]">
+                        <div class="bg-[#fff] flex items-center flex-col rounded-lg py-4 px-8 h-full">
+                            <img class="w-[150px]" src="{{ asset('assets-user/book.png') }}" alt="">
+                            <span class="block text-sm w-[150px] text-center mt-8">Penyetoran Sampah Organik</span>
+                        </div>
+                    </a> --}}
                 </div>
             </div>
         </div>

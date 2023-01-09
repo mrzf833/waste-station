@@ -24,4 +24,9 @@ class PointExchange extends Model
         'status',
         'accepted',
     ];
+
+    public function itemPoint()
+    {
+        return $this->belongsTo(ItemPoint::class, 'item_point_id', 'id');
+    }
 }

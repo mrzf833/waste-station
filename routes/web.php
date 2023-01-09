@@ -149,24 +149,29 @@ Route::group([], function(){
 
     Route::get('/', [LandingPageController::class, 'home'])->name('landing.home');
     Route::get('/program', [LandingPageController::class, 'program'])->name('landing.program');
-    Route::get('/program/organik', [LandingPageController::class, 'programOrganik'])->name('landing.program.organik');
-    Route::get('/program/non-organik', [LandingPageController::class, 'programNonOrganik'])->name('landing.program.non_organik');
-    Route::get('/program/{informationEducation}', [LandingPageController::class, 'programDetail'])->name('landing.program.detail');
+    Route::get('/information-education', [LandingPageController::class, 'informationEducation'])->name('landing.information_education');
+    Route::get('/information-education/{informationEducation}', [LandingPageController::class, 'informationEducationDetail'])->name('landing.information_education.detail');
     Route::get('/kategori', [LandingPageController::class, 'kategori'])->name('landing.kategori');
     Route::get('/tentang', [LandingPageController::class, 'tentang'])->name('landing.tentang');
 
     Route::group(['prefix' => 'dashboard', 'as' => 'user.', 'middleware' => 'client'], function(){
         Route::group(['prefix' => 'profile', 'as' => 'profile.'], function(){
             Route::get('/', [ProfileController::class, 'index'])->name('index');
+            Route::get('/show', [ProfileController::class, 'show'])->name('show');
+            Route::put('/edit', [ProfileController::class, 'edit'])->name('edit');
         });
 
         Route::group(['prefix' => 'riwayat-setor', 'as' => 'riwayat_setor.'], function(){
             Route::get('/', [RiwayatSetorController::class, 'index'])->name('index');
+            Route::get('/datatable', [RiwayatSetorController::class, 'datatable'])->name('datatable');
+            Route::get('/{transaction}/detail', [RiwayatSetorController::class, 'detail'])->name('detail');
+            Route::get('/datatable/{transaction}/detail', [RiwayatSetorController::class, 'datatableDetail'])->name('datatable.detail');
         });
 
         Route::group(['prefix' => 'riwayat-penukaran', 'as' => 'riwayat_penukaran.'], function(){
             Route::get('/', [RiwayatPenukaranController::class, 'index'])->name('index');
-            Route::get('/{id}/detail', [RiwayatPenukaranController::class, 'detail'])->name('detail');
+            Route::get('/{pointExchange}/detail', [RiwayatPenukaranController::class, 'detail'])->name('detail');
+            Route::put('/{pointExchange}/accepted', [RiwayatPenukaranController::class, 'accepted'])->name('accepted');
         });
 
         Route::group(['prefix' => 'transaction', 'as' => 'transaction.'], function(){

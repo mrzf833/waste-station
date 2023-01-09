@@ -21,8 +21,5 @@
                     </ul>
                 </div>
             </div>
-            <div class="flex items-center ml-8">
-                <iconify-icon icon="carbon:notification-new" class="text-[#964C9A]" width="30"></iconify-icon>
-            </div>
         </div>
     </div>

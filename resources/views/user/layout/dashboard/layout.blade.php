@@ -30,6 +30,7 @@
         }
     </style>
     <script src="https://code.iconify.design/iconify-icon/1.0.2/iconify-icon.min.js"></script>
+    @yield('css')
 </head>
 <body>
     @include('user.layout.dashboard.navbar')
@@ -42,5 +43,7 @@
         <img src="{{ asset('assets-user/bawah.png') }}" class="w-full" alt="">
         </div>
     </div>
+
+    @yield('script')
 </body>
 </html>

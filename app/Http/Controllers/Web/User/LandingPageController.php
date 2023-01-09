@@ -25,28 +25,40 @@ class LandingPageController extends Controller
 
     public function program()
     {
-        $programs = InformationEducation::all();
-        return view('user.landing-page.program', [
-            'programs' => $programs
-        ]);
-    }
-
-    public function programOrganik()
-    {
-        return view('user.landing-page.program-organik');
-    }
-
-    public function programNonOrganik()
-    {
         return view('user.landing-page.program-non-organik');
     }
 
-    public function programDetail(InformationEducation $informationEducation)
+    public function informationEducation()
     {
-        return view('user.landing-page.program-infomation-education', [
+        $informationEducations = InformationEducation::all();
+        return view('user.landing-page.information-education', [
+            'informationEducations' => $informationEducations
+        ]);
+    }
+
+    public function informationEducationDetail(InformationEducation $informationEducation)
+    {
+        return view('user.landing-page.infomation-education-detail', [
             'informationEducation' => $informationEducation
         ]);
     }
+
+    // public function programOrganik()
+    // {
+    //     return view('user.landing-page.program-organik');
+    // }
+
+    // public function programNonOrganik()
+    // {
+    //     return view('user.landing-page.program-non-organik');
+    // }
+
+    // public function programDetail(InformationEducation $informationEducation)
+    // {
+    //     return view('user.landing-page.program-infomation-education', [
+    //         'informationEducation' => $informationEducation
+    //     ]);
+    // }
 
     public function kategori()
     {

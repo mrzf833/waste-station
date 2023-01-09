@@ -64,6 +64,9 @@ class TransactionController extends Controller
             $updateUpdateUsaer->point -= $itemPoint->point;
             $updateUpdateUsaer->save();
 
+            $itemPoint->stock--;
+            $itemPoint->save();
+
             DB::commit();
             return redirect()->route('user.transaction.index')->with([
                 'status' => 'success',
@@ -71,7 +74,6 @@ class TransactionController extends Controller
             ]);
         }catch(Exception $e){
             DB::rollBack();
-            dd($e->getMessage());
             return redirect()->route('user.transaction.checkout', $itemPoint->id)->with([
                 'status' => 'failed',
                 'message' => $e->getMessage()
