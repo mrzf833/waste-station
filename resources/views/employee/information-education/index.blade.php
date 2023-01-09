@@ -15,7 +15,7 @@
         <div class="card h-100">
             <div class="card-content">
                 <div class="card-body">
-                    @component('components.datatable',['datas' => ['title', 'description','dibuat','aksi']])
+                    @component('components.datatable',['datas' => ['title', 'image',  'description','dibuat','aksi']])
                         @slot('id')
                             information_education
                         @endslot
@@ -55,6 +55,11 @@
                 {
                     data: 'title',
                     name: 'title',
+                    // orderable: false
+                },
+                {
+                    data: 'image',
+                    name: 'image',
                     // orderable: false
                 },
                 {

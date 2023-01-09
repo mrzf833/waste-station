@@ -27,6 +27,37 @@
                             <span>Point</span>
                         </a>
                     </li>
+
+                    <li class="sidebar-item {{ request()->routeIs('item_point.index') ? 'active' : '' }}">
+                        <a href="{{ route('item_point.index') }}" class='sidebar-link'>
+                            <i class="fa-solid fa-coins"></i>
+                            <span>Item Point</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item has-sub {{ request()->routeIs('point_exchanger.*') ? 'active' : '' }}">
+                        <a href="#" class="sidebar-link">
+                            <i class="bi bi-collection-fill"></i>
+                            <span>Penukaran Point</span>
+                        </a>
+                        <ul class="submenu {{ request()->routeIs('point_exchanger.*') ? 'active' : '' }}">
+                            <li class="submenu-item {{ request()->routeIs('point_exchanger.process') ? 'active' : '' }}">
+                                <a href="{{ route('point_exchanger.process') }}">Proses</a>
+                            </li>
+                            <li class="submenu-item {{ request()->routeIs('point_exchanger.index') ? 'active' : '' }}">
+                                <a href="{{ route('point_exchanger.index') }}">Semua</a>
+                            </li>
+                            <li class="submenu-item {{ request()->routeIs('point_exchanger.sent') ? 'active' : '' }}">
+                                <a href="{{ route('point_exchanger.sent') }}">Dikirim</a>
+                            </li>
+                            <li class="submenu-item {{ request()->routeIs('point_exchanger.accepted') ? 'active' : '' }}">
+                                <a href="{{ route('point_exchanger.accepted') }}">Diterima</a>
+                            </li>
+                            <li class="submenu-item {{ request()->routeIs('point_exchanger.rejected') ? 'active' : '' }}">
+                                <a href="{{ route('point_exchanger.rejected') }}">Ditolak</a>
+                            </li>
+                        </ul>
+                    </li>
                 @endif
                 <li class="sidebar-item {{ request()->routeIs('client.index') ? 'active' : '' }}">
                     <a href="{{ route('client.index') }}" class='sidebar-link'>
@@ -50,6 +81,12 @@
                     <a href="{{ route('information_education.index') }}" class='sidebar-link'>
                         <i class="fas fa-file"></i>
                         <span>Informasi Edukasi</span>
+                    </a>
+                </li>
+                <li class="sidebar-item {{ request()->routeIs('waste_category.index') ? 'active' : '' }}">
+                    <a href="{{ route('waste_category.index') }}" class='sidebar-link'>
+                        <i class="fas fa-file"></i>
+                        <span>Kategori Sampah</span>
                     </a>
                 </li>
                 <li class="sidebar-item">

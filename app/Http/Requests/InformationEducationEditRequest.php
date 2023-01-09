@@ -26,7 +26,8 @@ class InformationEducationEditRequest extends FormRequest
     {
         return [
             'title' => 'required',
-            'description' => 'required'
+            'description' => 'required',
+            'image' => 'nullable|image',
         ];
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -11,6 +12,16 @@ class InformationEducation extends Model
 
     protected $fillable = [
         'title',
-        'description'
+        'description',
+        'image'
     ];
+
+    protected function image(): Attribute
+    {
+        return Attribute::make(
+            function($value){
+                return 'storage' . str_replace('public', '', $value);
+            }
+        );
+    }
 }

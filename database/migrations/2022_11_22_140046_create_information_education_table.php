@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('information_education', function (Blueprint $table) {
             $table->id();
             $table->string('title', 225);
+            $table->string('image');
             $table->longText('description');
             $table->timestamps();
         });

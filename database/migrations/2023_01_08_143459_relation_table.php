@@ -30,6 +30,11 @@ return new class extends Migration
             $table->foreign('transaction_id')->references('id')->on('transactions')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('waste_id')->references('id')->on('wastes')->onDelete('cascade')->onUpdate('cascade');
         });
+
+        Schema::table('point_exchanges', function (Blueprint $table) {
+            $table->foreign('client_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('item_point_id')->references('id')->on('item_points')->onDelete('cascade')->onUpdate('cascade');
+        });
     }
 
     /**
@@ -55,6 +60,11 @@ return new class extends Migration
         Schema::table('transaction_details', function (Blueprint $table) {
             $table->dropForeign(['transaction_id']);
             $table->dropForeign(['waste_id']);
+        });
+
+        Schema::table('point_exchanges', function (Blueprint $table) {
+            $table->dropForeign(['client_id']);
+            $table->dropForeign(['item_point_id']);
         });
     }
 };

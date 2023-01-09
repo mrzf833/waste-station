@@ -30,6 +30,12 @@
                 </div>
                 <div class="col-12">
                     <div class="form-group">
+                        <label for="image">Image</label>
+                        <input type="file" class="form-control" name="image" id="judul" placeholder="image">
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="form-group">
                         <label for="description">Deskripsi</label>
                         <textarea name="description" id="description" class="form-control" cols="30" rows="4" placeholder="desckripsi">{{ old('description') ?? $informationEducation->description }}</textarea>
                     </div>
