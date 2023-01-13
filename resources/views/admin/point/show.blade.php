@@ -54,8 +54,6 @@
                             <option value="" selected disabled>-- pilih --</option>
                             <option value="0" {{ $user->status == $User::STATUS_ACTIVE ? 'selected' : '' }}>Active</option>
                             <option value="1" {{ $user->status == $User::STATUS_NOT_ACTIVE ? 'selected' : '' }}>Not Active</option>
-                            <option value="2" {{ $user->status == $User::STATUS_PROCESS ? 'selected' : '' }}>Proses</option>
-                            <option value="3" {{ $user->status == $User::STATUS_BAN ? 'selected' : '' }}>Ban</option>
                         </select>
                     </div>
                 </div>
