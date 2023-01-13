@@ -23,7 +23,7 @@
                 @if (Auth::user()->role->role == $Role::EMPLOYEE)
                     <li class="sidebar-item {{ request()->routeIs('employee.profile.show') ? 'active' : '' }}">
                         <a href="{{ route('employee.profile.show') }}" class='sidebar-link'>
-                            <i class="fa-solid fa-coins"></i>
+                            <i class="fas fa-user"></i>
                             <span>Profile</span>
                         </a>
                     </li>
@@ -31,7 +31,7 @@
                 @if (Auth::user()->role->role == $Role::ADMIN)
                     <li class="sidebar-item {{ request()->routeIs('admin.profile') ? 'active' : '' }}">
                         <a href="{{ route('admin.profile') }}" class='sidebar-link'>
-                            <i class="fa-solid fa-coins"></i>
+                            <i class="fas fa-user"></i>
                             <span>Profile</span>
                         </a>
                     </li>
@@ -44,7 +44,7 @@
 
                     <li class="sidebar-item {{ request()->routeIs('item_point.index') ? 'active' : '' }}">
                         <a href="{{ route('item_point.index') }}" class='sidebar-link'>
-                            <i class="fa-solid fa-coins"></i>
+                            <i class="fa-brands fa-product-hunt"></i>
                             <span>Item Point</span>
                         </a>
                     </li>
@@ -74,14 +74,14 @@
                     </li>
                     <li class="sidebar-item {{ request()->routeIs('employee.index') ? 'active' : '' }}">
                         <a href="{{ route('employee.index') }}" class='sidebar-link'>
-                            <i class="fas fa-user"></i>
+                            <i class="fa-solid fa-user-tie"></i>
                             <span>Karyawan</span>
                         </a>
                     </li>
                 @endif
                 <li class="sidebar-item {{ request()->routeIs('client.index') ? 'active' : '' }}">
                     <a href="{{ route('client.index') }}" class='sidebar-link'>
-                        <i class="fas fa-user"></i>
+                        <i class="fa-solid fa-users"></i>
                         <span>Nasabah</span>
                     </a>
                 </li>
@@ -105,7 +105,7 @@
                 </li>
                 <li class="sidebar-item {{ request()->routeIs('waste_category.index') ? 'active' : '' }}">
                     <a href="{{ route('waste_category.index') }}" class='sidebar-link'>
-                        <i class="fas fa-file"></i>
+                        <i class="fa-solid fa-book"></i>
                         <span>Kategori Sampah</span>
                     </a>
                 </li>
