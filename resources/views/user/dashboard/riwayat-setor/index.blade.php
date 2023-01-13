@@ -1,21 +1,17 @@
 @extends('user.layout.dashboard.layout')
 
 @section('css')
-    {{-- <link rel="stylesheet" href="https://unpkg.com/flowbite@1.6.0/dist/flowbite.min.css" />
-    <script src="https://unpkg.com/flowbite@1.6.0/dist/flowbite.min.js"></script> --}}
-    {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> --}}
     <link rel="stylesheet" href="//cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
 @endsection
 
 @section('script')
-{{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script> --}}
-<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
-<script src="//cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+<script src="{{ asset('assets-mazer/vendors/jquery/jquery.min.js') }}"></script>
+<script src="{{ asset('assets-mazer/vendors/jquery-datatables/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('assets-mazer/vendors/jquery-datatables/custom.jquery.dataTables.bootstrap5.min.js') }}"></script>
     <script>
         $(document).ready( function () {
             $('#riwayat_setor').DataTable({
             processing: true,
-            responsive: true,
             serverSide: true,
             ajax: {
                 url: "{{ route('user.riwayat_setor.datatable') }}",
@@ -70,19 +66,21 @@
                         </div>
                     </div>
                     <div>
-                        <table id="riwayat_setor" class="display table w-full">
-                            <thead class="">
-                                <tr>
-                                    <th>Petugas</th>
-                                    <th>Total Sampah</th>
-                                    <th>Total Point</th>
-                                    <th>Dibuat</th>
-                                    <th>Aksi</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            </tbody>
-                        </table>
+                        <div class="overflow-x-auto">
+                            <table id="riwayat_setor" class="display" style="width:100%">
+                                <thead class="">
+                                    <tr>
+                                        <th>Petugas</th>
+                                        <th>Total Sampah</th>
+                                        <th>Total Point</th>
+                                        <th>Dibuat</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
