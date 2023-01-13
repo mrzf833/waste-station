@@ -6,7 +6,7 @@
     <div class="container mx-auto my-16">
         <div class="flex flex-row flex-wrap">
             @forelse ($categoryWastes as $categoryWaste)
-                <div class="w-[200px] border rounded ml-8 mt-8">
+                <div class="w-[200px] border hover:shadow-lg duration-300 rounded ml-8 mt-8">
                     <div class="mx-3 my-4">
                         <div class="flex items-center flex-col">
                             <img class="w-full" src="{{ asset($categoryWaste->image) }}" alt="">

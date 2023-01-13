@@ -3,16 +3,19 @@
 @section('css')
     {{-- <link rel="stylesheet" href="https://unpkg.com/flowbite@1.6.0/dist/flowbite.min.css" />
     <script src="https://unpkg.com/flowbite@1.6.0/dist/flowbite.min.js"></script> --}}
+    {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> --}}
     <link rel="stylesheet" href="//cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
 @endsection
 
 @section('script')
+{{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script> --}}
 <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 <script src="//cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
     <script>
         $(document).ready( function () {
             $('#riwayat_setor').DataTable({
             processing: true,
+            responsive: true,
             serverSide: true,
             ajax: {
                 url: "{{ route('user.riwayat_setor.datatable') }}",
@@ -54,37 +57,20 @@
     <div class="container mx-auto pt-72">
         <div class="flex">
             @include('user.layout.dashboard.sidebar')
-            <div class="ml-16 w-full flex flex-col">
+            <div class="lg:ml-16 w-full flex flex-col">
                 <div class="w-full bg-[#F6F6F6] rounded h-full px-14 py-16">
-                    <h4 class="text-3xl mb-16">Riwayat Setor</h4>
-                    {{-- <div class="flex flex-row flex-wrap">
-                        <div class="px-4 py-4 w-1/2">
-                            <div class="border w-full px-8 py-4 shadow-lg rounded-lg">
-                                <div class="border-bottom flex justify-between mb-8">
-                                    <div class="flex items-center">
-                                        <i class="fa-solid fa-bag-shopping fa-2xl"></i>
-                                        <div class="ml-4">
-                                            <h5 class="text-sm">Sampah</h5>
-                                            <span class="text-[#A8A8A8]">3 Des 2022</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <hr class="mb-8 border-2">
-                                <div class="flex">
-                                    <img src="{{ asset('assets-user/sapu.png') }}" class="w-[100px]" alt="">
-                                    <div class="ml-4">
-                                        <h4 class="text-lg font-bold">Sapu Kebersihan</h4>
-                                        <span class="text-sm text-[#A8A8A8]">1 Barang</span>
-                                    </div>
-                                </div>
-                                <div class="flex flex-col mt-8">
-                                    <span class="text-base">Total Harga</span>
-                                    <span class="font-semibold text-lg">Rp102.750</span>
-                                </div>
-                            </div>
-                        </div> --}}
-
-                        <table id="riwayat_setor" class="display">
+                    <div class="mb-16">
+                        <h4 class="text-3xl hidden lg:block">Riwayat Setor</h4>
+                        <div class="flex items-center py-4 lg:hidden">
+                            <i class="fa-solid fa-cart-shopping fa-2xl"></i>
+                            <a href="{{ route('user.riwayat_setor.index') }}" class="flex flex-col ml-4">
+                                <span class="text-3xl">Riwayat Setor</span>
+                                <span class="text-sm text-[#7D7D7D]">{{ $riwayatSetorTotal }} Transaksi</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div>
+                        <table id="riwayat_setor" class="display table w-full">
                             <thead class="">
                                 <tr>
                                     <th>Petugas</th>
@@ -95,7 +81,6 @@
                                 </tr>
                             </thead>
                             <tbody>
-
                             </tbody>
                         </table>
                     </div>

@@ -47,7 +47,7 @@ class ClientController extends Controller
     public function show(User $user)
     {
         $roleId = Role::where('role', Role::CLIENT)->firstOrFail()->id;
-        $user = $user->where('role_id', $roleId)->firstOrFail();
+        $user = $user->where('role_id', $roleId)->where('id', $user->id)->firstOrFail();
         return view('employee.client.edit', [
             'user' => $user
         ]);
@@ -56,7 +56,7 @@ class ClientController extends Controller
     public function edit(ClientEditRequest $request, User $user)
     {
         $roleId = Role::where('role', Role::CLIENT)->firstOrFail()->id;
-        $user = $user->where('role_id', $roleId)->firstOrFail();
+        $user = $user->where('role_id', $roleId)->where('id', $user->id)->firstOrFail();
         DB::beginTransaction();
         try{
             $user->update([
@@ -87,7 +87,7 @@ class ClientController extends Controller
     {
         $roleId = Role::where('role', Role::CLIENT)->firstOrFail()->id;
         $statusNonActive = Role::where('role', User::STATUS_NOT_ACTIVE)->firstOrFail()->id;
-        $user = $user->where('role_id', $roleId)->firstOrFail();
+        $user = $user->where('role_id', $roleId)->where('id', $user->id)->firstOrFail();
         try{
             $user->update([
                 'status' => $statusNonActive

@@ -2,14 +2,14 @@
 @inject('PointExchange', 'App\Models\PointExchange')
 
 @section('content')
-<div class="mx-44">
+<div class="mx-8 md:mx-24 lg:mx-44 z-40 relative">
     <div class="container mx-auto pt-64">
         <!-- content -->
-        <div class="flex ">
-            <div class="">
-                <img class="w-[256px] block" src="{{ asset('assets-user/sapu.png') }}" alt="">
+        <div class="flex lg:flex-row flex-col">
+            <div class="flex justify-center mb-8 lg:mb-0 lg:block">
+                <img class="max-w-[256px] w-full block" src="{{ asset('assets-user/sapu.png') }}" alt="">
             </div>
-            <div class="inline-block ml-16 max-w-[588px] w-full">
+            <div class="inline-block lg:ml-16 lg:max-w-[588px] w-full">
                 <div class="flex justify-between items-center">
                     <h3 class="text-2xl">
                         {{ $pointExchange->itemPoint->title }}
@@ -60,7 +60,7 @@
                             <button type="submit" class="bg-[#2ecc71] px-16 py-4 rounded text-white ml-4 font-semibold">Di Terima</button>
                         </form>
                     @endif
-                    <a href="{{ route('user.riwayat_penukaran.index') }}" class="bg-[#2980B9] px-16 py-4 rounded text-white ml-4 font-semibold">Kembali</a>
+                    <a href="{{ route('user.riwayat_penukaran.index') }}" class="bg-[#3498db] hover:bg-[#2980b9] duration-300 px-16 py-4 rounded text-white ml-4 font-semibold">Kembali</a>
                 </div>
             </div>
         </div>

@@ -1,7 +1,7 @@
 @extends('user.layout.landing-page.layout')
 
 @section('content')
-<div class="pt-72">
+<div class="pt-48 lg:pt-72 z-40 relative">
     <div class="flex lg:flex-row lg:justify-between flex-col">
         <div class="ml-8 lg:ml-16">
             <h3 class="text-4xl font-medium text-[#666666] mb-2">Pengolahan Sampah Non-Organik</h3>

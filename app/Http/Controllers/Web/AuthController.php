@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
+use App\Models\Role;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
@@ -28,6 +29,17 @@ class AuthController extends Controller
             if (!Auth::attempt($credentials))
             {            
                 throw abort(422, 'The provided credentials do not match our records.');
+            }
+
+            $roleUser = Auth::user()->role->role;
+            // dd($roleUser);
+            if($roleUser != Role::EMPLOYEE && $roleUser != Role::ADMIN){
+                Auth::logout();
+
+                return redirect()->route('login')->with([
+                    'status' => 'failed',
+                    'message' => 'bukan karyawan ataupun admin'
+                ]);
             }
 
             return redirect()->route('dashboard');

@@ -17,23 +17,23 @@
                         @csrf
                         <div class="flex flex-col mb-4">
                             <label for="" class="mb-2">Username: </label>
-                            <input type="text" class="rounded-lg border-[#2C7B0C] border-2" name="username" id="">
+                            <input type="text" class="rounded-lg border-[#2C7B0C] border-2" name="username" id="" required>
                         </div>
                         <div class="flex flex-col mb-4">
                             <label for="" class="mb-2">Email: </label>
-                            <input type="email" class="rounded-lg border-[#2C7B0C] border-2" name="email" id="">
+                            <input type="email" class="rounded-lg border-[#2C7B0C] border-2" name="email" id="" required>
                         </div>
                         <div class="flex flex-col mb-4">
                             <label for="" class="mb-2">Password: </label>
-                            <input type="text" class="rounded-lg border-[#2C7B0C] border-2" name="password" id="">
+                            <input type="text" class="rounded-lg border-[#2C7B0C] border-2" name="password" id="" required>
                         </div>
                         <div class="flex flex-col mb-4">
                             <label for="" class="mb-2">Name: </label>
-                            <input type="text" class="rounded-lg border-[#2C7B0C] border-2" name="name" id="">
+                            <input type="text" class="rounded-lg border-[#2C7B0C] border-2" name="name" id="" required>
                         </div>
                         <div class="flex flex-col mb-4">
                             <label for="" class="mb-2">Telephone: </label>
-                            <input type="text" class="rounded-lg border-[#2C7B0C] border-2" name="telephone" id="">
+                            <input type="text" class="rounded-lg border-[#2C7B0C] border-2" name="telephone" id="" required>
                         </div>
                         <div class="flex flex-col mb-4">
                             <label for="" class="mb-2">Address: </label>
@@ -79,11 +79,11 @@
                         @csrf
                         <div class="flex flex-col mb-4">
                             <label for="" class="mb-2">Email: </label>
-                            <input type="text" class="rounded-lg border-[#2C7B0C] border-2" name="email" id="">
+                            <input type="text" class="rounded-lg border-[#2C7B0C] border-2" name="email" id="" required>
                         </div>
                         <div class="flex flex-col mb-4">
                             <label for="" class="mb-2">Password: </label>
-                            <input type="password" class="rounded-lg border-[#2C7B0C] border-2" name="password" id="">
+                            <input type="password" class="rounded-lg border-[#2C7B0C] border-2" name="password" id="" required>
                         </div>
                         {{-- <div class="mb-4">
                             <a href="" class="text-[#2C7B0C] text-lg">Lupa Password</a>

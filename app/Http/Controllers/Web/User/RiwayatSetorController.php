@@ -47,7 +47,7 @@ class RiwayatSetorController extends Controller
             ->getQuery();
         return datatables()->of($query)
         ->addColumn('action', function($data){
-            $button = '<a href="'. route('user.riwayat_setor.detail', $data->id) .'" class="px-4 py-2 bg-[#f1c40f] text-white rounded">Show</a>';
+            $button = '<a href="'. route('user.riwayat_setor.detail', $data->id) .'" class="px-4 py-2 bg-[#f1c40f] text-white rounded hover:bg-[#f39c12] duration-300">Show</a>';
             return $button;
         })
         ->rawColumns(['action'])

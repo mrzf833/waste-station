@@ -22,7 +22,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
-            $table->enum('status', [0, 1, 2, 3])->comment('0: active; 1: not active; 2: proses; 3: ban');
+            $table->enum('status', [0, 1])->comment('0: active; 1: not active;');
             $table->timestamps();
         });
     }

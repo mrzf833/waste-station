@@ -33,6 +33,7 @@
     @yield('css')
 </head>
 <body>
+    @include('user.layout.dashboard.alert')
     @include('user.layout.dashboard.navbar')
     
     <img src="{{ asset('assets-user/awan-atas.svg') }}" class="img-awan-atas absolute l-0 top-16" alt="">
@@ -44,6 +45,33 @@
         </div>
     </div>
 
+
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+    <script>
+        $(document).on('click', '#btn-navbar-mobile', function(){
+            let kondisi = $('#navbar-mobile').attr('check')
+
+            if(kondisi == 'close'){
+                $('#navbar-mobile').removeClass('hidden')
+                $('#navbar-mobile').attr('check', 'open')
+            }else if(kondisi == 'open'){
+                $('#navbar-mobile').addClass('hidden')
+                $('#navbar-mobile').attr('check', 'close')
+            }
+        })
+
+        $(document).on('click', '#btn-close-navbar-mobile', function(){
+            let kondisi = $('#navbar-mobile').attr('check')
+
+            if(kondisi == 'close'){
+                $('#navbar-mobile').removeClass('hidden')
+                $('#navbar-mobile').attr('check', 'open')
+            }else if(kondisi == 'open'){
+                $('#navbar-mobile').addClass('hidden')
+                $('#navbar-mobile').attr('check', 'close')
+            }
+        })
+    </script>
     @yield('script')
 </body>
 </html>

@@ -1,7 +1,7 @@
 @extends('user.layout.landing-page.layout')
 
 @section('content')
-<div class="pt-72">
+<div class="mx-8 pt-44 lg:pt-72">
     <div class="flex justify-center">
         <div class="flex flex-col">
             <div class="flex justify-center">

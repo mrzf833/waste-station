@@ -7,7 +7,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class StatsuActive
+class IsActive
 {
     /**
      * Handle an incoming request.
@@ -18,11 +18,9 @@ class StatsuActive
      */
     public function handle(Request $request, Closure $next)
     {
-        $status = Auth::user()->status;
-        if($status == User::STATUS_ACTIVE){
+        if(Auth::user()->status == User::STATUS_ACTIVE){
             return $next($request);
         }
-
-        return abort(403, 'account your not active');
+        return abort(403, 'User Tidak Aktif');
     }
 }

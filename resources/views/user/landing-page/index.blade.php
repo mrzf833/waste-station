@@ -1,7 +1,7 @@
 @extends('user.layout.landing-page.layout')
 
 @section('content')
-<div class="pt-36">
+<div class="pt-16 lg:pt-36">
     <div class="flex justify-between flex-col lg:flex-row">
         <div class="ml-8 lg:ml-24 mt-36">
             <div class="text-[#666666]">
@@ -9,7 +9,7 @@
                 <div class="ml-4 my-2">
                     <span class="max-w-[380px] block">Waste Station merupakan website yang menyediakan layanan edukasi dan tempat pengumpulan sampah yang dapat didaur ulang.</span>
                     <div class="my-6">
-                        <button type="button" data-modal-target="default" data-modal-toggle="registerModal"  class="bg-[#5CB319] text-[#fff] px-3 py-2 rounded-lg text-xl">Ayo Bergabung!</button>
+                        <button type="button" data-modal-target="default" data-modal-toggle="registerModal"  class="bg-[#5CB319] duration-300 hover:bg-[#478B13] text-[#fff] px-3 py-2 rounded-lg text-xl">Ayo Bergabung!</button>
                     </div>
                 </div>
             </div>
@@ -68,7 +68,7 @@
             <h1 class="text-center text-[50px] text-[#fff] py-28">Program</h1>
             <div class="flex justify-center">
                 <div class="flex flex-col gap-8 lg:flex-row justify-center">
-                    <a href="{{ route('landing.program') }}" class="inline-block mx-8 mx-w-[214px]">
+                    <a href="{{ route('landing.program') }}" class="inline-block mx-8 max-w-[214px]">
                         <div class="bg-[#fff] flex items-center flex-col rounded-lg py-4 px-8 h-full">
                             <img class="w-[80px]" src="{{ asset('assets-user/non-organik.png') }}" alt="">
                             <span class="block text-sm w-[150px] text-center mt-8">Penyetoran Sampah Non-Organik</span>

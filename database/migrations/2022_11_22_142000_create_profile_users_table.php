@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('profile_users', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
-            $table->text('address');
+            $table->text('address')->nullable();
             $table->string('telephone');
             $table->bigInteger('point');
             $table->timestamps();

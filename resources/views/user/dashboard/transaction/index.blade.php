@@ -1,7 +1,7 @@
 @extends('user.layout.dashboard.layout')
 
 @section('content')
-<div class="mx-32">
+<div class="mx-8 lg:mt-16 lg:mt-0 lg:mx-32">
     <div class="container mx-auto pt-64">
         <!-- content -->
         <div class="">
@@ -11,7 +11,7 @@
                     @forelse ($itemPoints as $itemPoint)
                         <a href="{{ route('user.transaction.detail', $itemPoint->id) }}" class="flex justify-center">
                             <div class="flex flex-row flex-wrap">
-                                <div class="w-[200px] border rounded mx-4 mt-8">
+                                <div class="max-w-[200px] border rounded mx-4 mt-8 hover:shadow-lg duration-300">
                                     <img src="{{ asset($itemPoint->image) }}" alt="">
                                     <div class="mx-4 my-4">
                                         <h3 class="text-base">{{ $itemPoint->title }}</h3>

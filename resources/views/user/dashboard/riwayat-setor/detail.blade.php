@@ -44,7 +44,7 @@
     <div class="container mx-auto pt-72">
         <div class="flex">
             @include('user.layout.dashboard.sidebar')
-            <div class="ml-16 w-full flex flex-col">
+            <div class="lg:ml-16 w-full flex flex-col">
                 <div class="w-full bg-[#F6F6F6] rounded h-full px-14 py-16">
                     <h4 class="text-3xl mb-16">Riwayat Setor Detail</h4>
                         <div class="flex flex-col mb-4">
@@ -56,7 +56,7 @@
                                 <label for="" class="mb-2">Total Sampah</label>
                                 <input type="text" class="rounded-lg bg-gray-300" disabled value="{{ $riwayatSetor->total_waste }}">
                             </div>
-                            <div class="ml-4 flex flex-col mb-4 w-full">
+                            <div class="md:ml-4 flex flex-col mb-4 w-full">
                                 <label for="" class="mb-2">Total Point</label>
                                 <input type="text" class="rounded-lg bg-gray-300" value="{{ $riwayatSetor->total_point }}">
                             </div>

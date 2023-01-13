@@ -14,8 +14,8 @@ class User extends Authenticatable
 
     const STATUS_ACTIVE = '0';
     const STATUS_NOT_ACTIVE = '1';
-    const STATUS_PROCESS = '2';
-    const STATUS_BAN = '3';
+    // const STATUS_PROCESS = '2';
+    // const STATUS_BAN = '3';
 
     /**
      * The attributes that are mass assignable.

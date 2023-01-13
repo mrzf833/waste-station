@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="{{ asset('assets-mazer/vendors/bootstrap-icons/bootstrap-icons.css') }}">
     <link rel="stylesheet" href="{{ asset('assets-mazer/css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('assets-mazer/css/pages/auth.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets-mazer/vendors/toastify/toastify.css') }}">
 </head>
 
 <body>
@@ -55,6 +56,40 @@
     </div>
     <script src="{{ asset('assets-mazer/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets-mazer/js/mazer.js') }}"></script>
+    <script src="{{ asset('assets-mazer/vendors/toastify/toastify.js') }}"></script>
+    <script>
+        @if(Session::has('status') && Session::get('status') === "success")
+            Toastify({
+                text: `
+                {{ Session::get('message') }}
+                `,
+                backgroundColor: "#198754",
+                close: true,
+            }).showToast();
+        @endif
+        @if(isset($errors) && count($errors) > 0)
+            @forelse ($errors->messages() as $index => $values)
+                    Toastify({
+                        text: `
+                        {{ $values[0] }}
+                        `,
+                        backgroundColor: "#dc3545",
+                        close: true,
+                    }).showToast();
+            @empty
+                
+            @endforelse
+        @endif
+        @if(Session::has('status') && Session::get('status') === "failed")
+            Toastify({
+                text: `
+                {{ Session::get('message') }}
+                `,
+                backgroundColor: "#dc3545",
+                close: true,
+            }).showToast();
+        @endif
+    </script>
 </body>
 
 </html>

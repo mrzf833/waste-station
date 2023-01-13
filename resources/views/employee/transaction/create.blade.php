@@ -47,23 +47,25 @@
                     </div>
                 </div>
                 <div class="col-12 row" id="wastes">
-                    <div class="col-12 col-md-8">
-                        <div class="form-group">
-                            <label for="waste_id">Sampah</label>
-                            <select name="waste_id[]" id="waste_id" class="form-control w-100">
-                                <option value="">-- Pilih --</option>
-                                @forelse ($wastes as $waste)
-                                    <option value="{{ $waste->id }}">{{ $waste->id }} | {{ $waste->name }}</option>
-                                @empty
-                                    
-                                @endforelse
-                            </select>
+                    <div class="col-12 row parent-waste">
+                        <div class="col-12 col-md-8">
+                            <div class="form-group">
+                                <label for="waste_id">Sampah</label>
+                                <select name="waste_id[]" id="waste_id" class="form-control w-100 select-waste">
+                                    <option value="">-- Pilih --</option>
+                                    @forelse ($wastes as $waste)
+                                        <option value="{{ $waste->id }}">{{ $waste->id }} | {{ $waste->name }}</option>
+                                    @empty
+                                        
+                                    @endforelse
+                                </select>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-12 col-md-4">
-                        <div class="form-group">
-                            <label for="title">Total Sampah (KG)</label>
-                            <input type="number" class="form-control" name="waste_total[]" id="sampah" placeholder="" required value="{{ old('title') }}">
+                        <div class="col-12 col-md-4">
+                            <div class="form-group">
+                                <label for="title">Total Sampah (KG)</label>
+                                <input type="number" class="form-control inp-waste" name="waste_total[]" id="sampah" placeholder="" required value="{{ old('title') }}">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -79,26 +81,71 @@
 <script>
     $('#add-waste').click(function(){
         $('#wastes').append(`
-        <div class="col-12 col-md-8">
-            <div class="form-group">
-                <label for="waste_id">Sampah</label>
-                <select name="waste_id[]" id="waste_id" class="form-control w-100">
-                    <option value="">-- Pilih --</option>
-                    @forelse ($wastes as $waste)
-                        <option value="{{ $waste->id }}">{{ $waste->id }} | {{ $waste->name }}</option>
-                    @empty
-                        
-                    @endforelse
-                </select>
+        <div class="col-12 row parent-waste">
+            <div class="col-12 col-md-8">
+                <div class="form-group">
+                    <label for="waste_id">Sampah</label>
+                    <select name="waste_id[]" id="waste_id" class="form-control w-100 select-waste">
+                        <option value="">-- Pilih --</option>
+                        @forelse ($wastes as $waste)
+                            <option value="{{ $waste->id }}">{{ $waste->id }} | {{ $waste->name }}</option>
+                        @empty
+                            
+                        @endforelse
+                    </select>
+                </div>
             </div>
-        </div>
-        <div class="col-12 col-md-4">
-            <div class="form-group">
-                <label for="title">Total Sampah (KG)</label>
-                <input type="number" class="form-control" name="waste_total[]" id="sampah" placeholder="" required value="{{ old('title') }}">
+            <div class="col-12 col-md-4">
+                <div class="form-group">
+                    <label for="title">Total Sampah (KG)</label>
+                    <input type="number" class="form-control inp-waste" name="waste_total[]" id="sampah" placeholder="" required value="{{ old('title') }}">
+                </div>
             </div>
         </div>
         `)
+    })
+
+    let wastes = {!! $wastes !!}
+
+    function totalPoint(){
+        let total = 0
+
+        let wastesElement = $('#wastes .parent-waste')
+        for(let i = 0; i < wastesElement.length; i++){
+            let pointSampah = 0
+            let totalSampah = 0
+
+            let selectWasteId = $(wastesElement[i]).find('.select-waste').val()
+            let waste = wastes.find(function(waste){
+                return waste.id == selectWasteId
+            })
+
+            let inputPointSampah = $(wastesElement[i]).find('.inp-waste').val()
+
+            if(inputPointSampah){
+                totalSampah = inputPointSampah
+            }
+
+            if(waste){
+                pointSampah = waste.point
+            }
+
+            total += prosesTotalPoint(pointSampah, totalSampah)
+        }
+
+        $('#point').val(total)
+    }
+
+    function prosesTotalPoint(nilai1,nilai2){
+        return nilai1 * nilai2;
+    }
+
+    $(document).on('change', '.select-waste', function(){
+        totalPoint()
+    })
+
+    $(document).on('keyup', '.inp-waste', function(){
+        totalPoint()
     })
 </script>
 @endsection

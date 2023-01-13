@@ -31,7 +31,7 @@ class AuthController extends Controller
             return redirect()->route('user.profile.index');
         }catch(Exception $e){
             return redirect()->route('landing.home')->with([
-                'status' => 'error',
+                'status' => 'failed',
                 'message' => $e->getMessage()
             ]);
         }

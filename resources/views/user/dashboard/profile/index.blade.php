@@ -5,17 +5,21 @@
     <div class="container mx-auto pt-72">
         <div class="flex">
             @include('user.layout.dashboard.sidebar')
-            <div class="ml-16 w-full flex flex-col">
-                <div class="flex justify-end w-full">
-                    <div>
-                        <div class="py-4 px-6 bg-[#EEEEEE] rounded-lg shadow-gray-200 shadow ">
-                            <i class="fa-solid fa-coins fa-2xl text-[#F6B93B]"></i>
-                            <span class="pl-8 text-2xl font-semibold">{{ $user->profileUser->point }}</span>
+            <div class="lg:ml-16 w-full flex flex-col">
+                <div class="flex lg:justify-end w-full">
+                    <div class="flex flex-col sm:flex-row sm:justify-between lg:block w-full lg:w-auto">
+                        <div>
+                            <div class="inline-block sm:block py-4 px-6 bg-[#EEEEEE] rounded-lg shadow-gray-200 shadow ">
+                                <i class="fa-solid fa-coins fa-2xl text-[#F6B93B]"></i>
+                                <span class="pl-8 text-2xl font-semibold">{{ $user->profileUser->point }}</span>
+                            </div>
                         </div>
-                        <a href="{{ route('user.transaction.index') }}" class="block bg-[#EEEEEE] rounded-2xl shadow-gray-200 shadow my-4 px-8 py-2 text-lg">
-                            <span class="mr-4">Tukar Poin</span>
-                            <i class="fa-solid fa-arrow-right"></i>
-                        </a>
+                        <div>
+                            <a href="{{ route('user.transaction.index') }}" class="inline-block sm:block bg-[#EEEEEE] rounded-2xl shadow-gray-200 shadow my-4 px-8 py-2 text-lg">
+                                <span class="mr-4">Tukar Poin</span>
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <div class="w-full bg-[#F6F6F6] rounded h-full px-14 py-16">

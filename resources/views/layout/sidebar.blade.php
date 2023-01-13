@@ -20,7 +20,21 @@
                         <span>Dashboard</span>
                     </a>
                 </li>
+                @if (Auth::user()->role->role == $Role::EMPLOYEE)
+                    <li class="sidebar-item {{ request()->routeIs('employee.profile.show') ? 'active' : '' }}">
+                        <a href="{{ route('employee.profile.show') }}" class='sidebar-link'>
+                            <i class="fa-solid fa-coins"></i>
+                            <span>Profile</span>
+                        </a>
+                    </li>
+                @endif
                 @if (Auth::user()->role->role == $Role::ADMIN)
+                    <li class="sidebar-item {{ request()->routeIs('admin.profile') ? 'active' : '' }}">
+                        <a href="{{ route('admin.profile') }}" class='sidebar-link'>
+                            <i class="fa-solid fa-coins"></i>
+                            <span>Profile</span>
+                        </a>
+                    </li>
                     <li class="sidebar-item {{ request()->routeIs('point.index') ? 'active' : '' }}">
                         <a href="{{ route('point.index') }}" class='sidebar-link'>
                             <i class="fa-solid fa-coins"></i>
@@ -57,6 +71,12 @@
                                 <a href="{{ route('point_exchanger.rejected') }}">Ditolak</a>
                             </li>
                         </ul>
+                    </li>
+                    <li class="sidebar-item {{ request()->routeIs('employee.index') ? 'active' : '' }}">
+                        <a href="{{ route('employee.index') }}" class='sidebar-link'>
+                            <i class="fas fa-user"></i>
+                            <span>Karyawan</span>
+                        </a>
                     </li>
                 @endif
                 <li class="sidebar-item {{ request()->routeIs('client.index') ? 'active' : '' }}">

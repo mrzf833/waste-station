@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\Web\AdminController;
 use App\Http\Controllers\Web\AuthController;
-use App\Http\Controllers\Web\BarangController;
 use App\Http\Controllers\Web\ClientController;
 use App\Http\Controllers\Web\DashboardController;
+use App\Http\Controllers\Web\EmployeeController;
+use App\Http\Controllers\Web\EmployeeProfileController;
 use App\Http\Controllers\Web\InformationEducationController;
 use App\Http\Controllers\Web\ItemPointController;
 use App\Http\Controllers\Web\PointController;
@@ -41,9 +43,14 @@ Route::group(['prefix' => 'dashboard-page'], function(){
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
     Route::group(['middleware' => ['auth', 'status.active']], function(){
-        Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+        Route::group(['middleware' => 'employee'],function(){
+            Route::get('/employee/profile', [EmployeeProfileController::class, 'show'])->name('employee.profile.show');
+            Route::put('/employee/profile', [EmployeeProfileController::class, 'processEdit'])->name('employee.profile.edit');
+        });
 
         Route::group(['middleware' => 'adminOrEmployee'], function(){
+            Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
             Route::group(['prefix' => '/waste-category', 'as' => 'waste_category.'], function(){
                 Route::get('/', [WasteCategoryController::class, 'index'])->name('index');
                 Route::get('/datatable', [WasteCategoryController::class, 'datatable'])->name('datatable');
@@ -106,6 +113,20 @@ Route::group(['prefix' => 'dashboard-page'], function(){
         });
 
         Route::group(['middleware' => 'admin'], function(){
+            Route::get('/admin/profile', [AdminController::class, 'profile'])->name('admin.profile');
+            Route::get('/admin/change-password', [AdminController::class, 'changePassword'])->name('admin.change_password');
+            Route::put('/admin/change-password', [AdminController::class, 'processChangePassword'])->name('admin.change_password');
+
+            Route::group(['prefix' => '/employee', 'as' => 'employee.'], function(){
+                Route::get('/', [EmployeeController::class, 'index'])->name('index');
+                Route::get('/datatable', [EmployeeController::class, 'datatable'])->name('datatable');
+                Route::post('/', [EmployeeController::class, 'store'])->name('store');
+                Route::get('/create', [EmployeeController::class, 'create'])->name('create');
+                Route::get('/{user:id}/show', [EmployeeController::class, 'show'])->name('show');
+                Route::put('/{user:id}/edit', [EmployeeController::class, 'edit'])->name('edit');
+                Route::delete('/{user:id}/delete', [EmployeeController::class, 'destroy'])->name('destroy');
+            });
+
             Route::group(['prefix' => '/point', 'as' => 'point.'], function(){
                 Route::get('/', [PointController::class, 'index'])->name('index');
                 Route::get('/datatable', [PointController::class, 'datatable'])->name('datatable');
@@ -154,7 +175,7 @@ Route::group([], function(){
     Route::get('/kategori', [LandingPageController::class, 'kategori'])->name('landing.kategori');
     Route::get('/tentang', [LandingPageController::class, 'tentang'])->name('landing.tentang');
 
-    Route::group(['prefix' => 'dashboard', 'as' => 'user.', 'middleware' => 'client'], function(){
+    Route::group(['prefix' => 'dashboard', 'as' => 'user.', 'middleware' => ['auth', 'client', 'status.active']], function(){
         Route::group(['prefix' => 'profile', 'as' => 'profile.'], function(){
             Route::get('/', [ProfileController::class, 'index'])->name('index');
             Route::get('/show', [ProfileController::class, 'show'])->name('show');
