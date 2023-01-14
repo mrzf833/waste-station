@@ -15,24 +15,26 @@
                     <a href="{{ route('user.riwayat_setor.index') }}" class="font-semibold text-[#868984] hover:text-[#5CB319] {{ request()->routeIs('user.riwayat_setor*') ? 'text-[#5CB319]' : '' }}">Riwayat Setor</a>
                     <a href="{{ route('user.riwayat_penukaran.index') }}" class="font-semibold text-[#868984] hover:text-[#5CB319] {{ request()->routeIs('user.riwayat_penukaran*') ? 'text-[#5CB319]' : '' }}">Riwayat Penukaran</a>
                 </div>
-                <img src="{{ asset('assets-user/profile.png') }}" class="w-[40px] rounded-full" alt="">
-                <button type="button" id="dropdownDefaultButton" data-dropdown-toggle="dropdown"  class="flex items-center">
-                    <span class="text-base mx-4">{{ Auth::user()->name }}</span>
-                    <img src="{{ asset('assets-user/bawah-icon.png') }}" alt="">
-                </button>
-                <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded shadow w-44 dark:bg-gray-700">
-                    <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
-                        <li>
-                            <a href="{{ route('user.profile.index') }}" class="block w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Profile</a>
-                        </li>
-                        <li>
-                            <form action="{{ route('landing.logout') }}" method="POST">
-                                @csrf
-                                <button type="submit" class="block w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Logout</button>
-                            </form>
-                        </li>
-                    </ul>
-                </div>
+                @if (!request()->routeIs('user.profile.index'))
+                    <img src="{{ asset('assets-user/profile.png') }}" class="w-[40px] rounded-full" alt="">
+                    <button type="button" id="dropdownDefaultButton" data-dropdown-toggle="dropdown"  class="flex items-center">
+                        <span class="text-base mx-4">{{ Auth::user()->name }}</span>
+                        <img src="{{ asset('assets-user/bawah-icon.png') }}" alt="">
+                    </button>
+                    <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded shadow w-44 dark:bg-gray-700">
+                        <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
+                            <li>
+                                <a href="{{ route('user.profile.index') }}" class="block w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Profile</a>
+                            </li>
+                            <li>
+                                <form action="{{ route('landing.logout') }}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="block w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Logout</button>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+                @endif
             </div>
         </div>
     </div>
@@ -54,5 +56,17 @@
             <div class="flex justify-center">
                 <a href="{{ route('user.riwayat_penukaran.index') }}" class="text-xl font-semibold link-navbar hover:text-[#5CB319] duration-300 my-4 {{ request()->routeIs('user.riwayat_penukaran*') ? 'link-navbar-active' : '' }}">Riwayat Penukaran</a>
             </div>
+
+            @if (request()->routeIs('user.profile.index'))
+                <div>
+                    <hr>
+                    <div class="flex justify-center">
+                        <form action="{{ route('landing.logout') }}" method="POST">
+                            @csrf
+                            <button type="submit" class="text-xl text-center font-semibold link-navbar hover:text-[#5CB319] duration-300 my-4">Logout</button>
+                        </form>
+                    </div>
+                </div>
+            @endif
         </div>
     </div>

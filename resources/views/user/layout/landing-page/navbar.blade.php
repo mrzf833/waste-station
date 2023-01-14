@@ -8,7 +8,7 @@
         <a href="{{ route('landing.information_education') }}" class="text-xl mx-3 link-navbar hover:text-[#5CB319] duration-300  {{ request()->routeIs('landing.information_education*') ? 'link-navbar-active' : '' }}">Informasi edukasi</a>
         <a href="{{ route('landing.kategori') }}" class="text-xl mx-3 link-navbar hover:text-[#5CB319] duration-300 {{ request()->routeIs('landing.kategori') ? 'link-navbar-active' : '' }}">Kategori</a>
         <a href="{{ route('landing.tentang') }}" class="text-xl mx-3 link-navbar hover:text-[#5CB319] duration-300 {{ request()->routeIs('landing.tentang') ? 'link-navbar-active' : '' }}">Tentang</a>
-        <button data-modal-target="default" data-modal-toggle="loginModal"  type="button" class=" text-xl mx-3 duration-300 bg-[#5CB319] hover:bg-[#478B13] text-[#fff] px-3 py-2 rounded">Ayo Bergabung!</button>
+        <button data-modal-target="loginModal" data-modal-toggle="loginModal"  type="button" class=" text-xl mx-3 duration-300 bg-[#5CB319] hover:bg-[#478B13] text-[#fff] px-3 py-2 rounded">Ayo Bergabung!</button>
     </div>
 
     <div class="flex justify-end lg:hidden">
@@ -39,6 +39,15 @@
         </div>
         <div class="flex justify-center">
             <a href="{{ route('landing.tentang') }}" class="text-xl font-semibold link-navbar hover:text-[#5CB319] duration-300 my-4 {{ request()->routeIs('landing.tentang') ? 'link-navbar-active' : '' }}">Tentang</a>
+        </div>
+        <div>
+            <hr>
+            <div class="flex justify-center">
+                <button type="button" data-modal-target="loginModal" data-modal-toggle="loginModal"  class="text-xl font-semibold link-navbar hover:text-[#5CB319] duration-300 my-4" onclick="closeNavMobile()">Login</button>
+            </div>
+            <div class="flex justify-center">
+                <button type="button" data-modal-target="registerModal" data-modal-toggle="registerModal" class="text-xl font-semibold link-navbar hover:text-[#5CB319] duration-300 my-4" onclick="closeNavMobile()">Daftar</button>
+            </div>
         </div>
     </div>
 </div>

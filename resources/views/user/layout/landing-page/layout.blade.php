@@ -30,18 +30,19 @@
     <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
     <script>
         $(document).on('click', '#btn-navbar-mobile', function(){
-            let kondisi = $('#navbar-mobile').attr('check')
-
-            if(kondisi == 'close'){
-                $('#navbar-mobile').removeClass('hidden')
-                $('#navbar-mobile').attr('check', 'open')
-            }else if(kondisi == 'open'){
-                $('#navbar-mobile').addClass('hidden')
-                $('#navbar-mobile').attr('check', 'close')
-            }
+            navbarMobile()
         })
 
         $(document).on('click', '#btn-close-navbar-mobile', function(){
+            navbarMobile()
+        })
+
+        function closeNavMobile(){
+            $('#navbar-mobile').addClass('hidden')
+            $('#navbar-mobile').attr('check', 'close')
+        }
+
+        function navbarMobile(){
             let kondisi = $('#navbar-mobile').attr('check')
 
             if(kondisi == 'close'){
@@ -51,7 +52,7 @@
                 $('#navbar-mobile').addClass('hidden')
                 $('#navbar-mobile').attr('check', 'close')
             }
-        })
+        }
     </script>
 </body>
 </html>
